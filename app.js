@@ -123,7 +123,7 @@ for (let i = 0; i < delete_btn.length; i++) {
       
         let del_parent = this.parentElement; 
         let div_parent = del_parent.parentNode.firstElementChild.nextElementSibling.firstElementChild.innerHTML; 
-        // console.log(div_parent);
+        console.log(del_parent);
 
         localStorage.removeItem("budget_"+div_parent);
         location.href = location.href ;
@@ -145,15 +145,39 @@ for (i = 0 ; i<  edit_btn.length ; i++ ){
     var cnfrm_mess =  window.confirm("Do You Wanna Update It ?");
     if(cnfrm_mess == true){
       // alert("success")
-      let edit_parent = this.parentElement ;
-      let data_parent = edit_parent.parentElement ;
+      let edit_parent = this.parentElement.previousElementSibling ;
+      let data_parent_title = edit_parent.firstElementChild.innerHTML ;
+      let data_parent_cost = edit_parent.firstElementChild.nextElementSibling.innerHTML ;
       
-  
-      console.log(edit_parent );
+
+      product_title.value = data_parent_title ; 
+      product_cost.value = data_parent_cost ; 
+      product_title.focus();
+
+      product_btn.innerHTML = "Update Data";
+
+      product_btn.onclick = function() { 
+
+        localStorage.removeItem("budget_"+data_parent_title)
+        let p_title = product_title.value ;
+        let p_cost = product_cost.value ;
+    
+        let data = {p_title : p_title , p_cost : p_cost}
+    
+        // Convert into string and push into local storage
+        let dataString = JSON.stringify(data);
+    
+        localStorage.setItem("budget_" + product_title.value , dataString);
+        location.href = location.href ; 
+
+      }
+
+
+      console.log(data_parent_title );
+      console.log(data_parent_cost);
 
       // let get_product_data = data_parent.firstElementChild;
       // let get_cost_data = data_parent.firstElementChild.nextElementSibling;
-      // console.log(get_cost_data);
     } 
     else{
       alert("Your Data is Safe ✅")
