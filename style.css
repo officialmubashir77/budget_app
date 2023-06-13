@@ -24,3 +24,21 @@ input[type=number] {
 .font-size {
     font-size: 25px;
 }
+
+.delete-btn{
+  cursor: pointer;
+}
+
+.delete-btn:hover{
+  color: #dc3545;
+  transition: all 0.3s ease-in-out;
+}
+.edit-btn{
+  cursor: pointer;
+}
+
+.edit-btn:hover{
+  color:#28a745;
+  transition: all 0.3s ease-in-out;
+
+}

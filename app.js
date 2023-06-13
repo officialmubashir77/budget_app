@@ -122,8 +122,8 @@ for (let i = 0; i < delete_btn.length; i++) {
     if (confirm_del) {
       
         let del_parent = this.parentElement; 
-        let div_parent = del_parent.parentNode.firstElementChild.nextElementSibling.firstElementChild.innerHTML; 
-        console.log(del_parent);
+        let div_parent = del_parent.previousElementSibling.firstChild.innerHTML; 
+        console.log(div_parent);
 
         localStorage.removeItem("budget_"+div_parent);
         location.href = location.href ;
